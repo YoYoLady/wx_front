@@ -52,6 +52,33 @@ Page({
     })
   },
   clickMe: function () {
-    this.setData({ msg: "Hello World" })
+    wx.navigateTo({
+      url: '../first_page/first_page'
+    })
+    
+    // wx.request({
+    //   url: 'https://zhili.pub:8000/user/add', //仅为示例，并非真实的接口地址
+    //   data: {
+    //     wx_id: 'yu2',
+    //     user_id : '111',
+    //     user_name : 'shengyu',
+    //     wx_name : 'dfsa'
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success(res) {
+    //     console.log("res" + res)
+    //     this.setData({ msg: "send user message to back" })
+    //   }
+    // })
+  },
+  printObj: function (obj) {
+    var output = "";
+    for (var i in obj) {
+      var property = obj[i];
+      output += i + " = " + property + "\n";
+    }
+    console.log(output);
   }
 })

@@ -1,7 +1,10 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/first_page/first_page",
+    "pages/holland/holland",
+    "pages/holland_result/holland_result"
   ],
   "window":{
     "backgroundTextStyle":"light",
