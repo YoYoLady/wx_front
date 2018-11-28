@@ -11,6 +11,11 @@ Page({
       { name: '杭州市二中', value: '0' },
       { name: '杭州西湖区文新中学', value: '1'}
     ],
+    radioGradeItems: [
+      { name: '一年级', value: '1' },
+      { name: '二年级', value: '2' },
+      { name: '三年级', value: '3' },
+    ],
     checkboxItems: [
       { name: 'standard is dealt for u.', value: '0', checked: true },
       { name: 'standard is dealicient for u.', value: '1' }

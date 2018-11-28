@@ -7,7 +7,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    head_title: '高中生专业倾向评测'
   },
   //事件处理函数
   bindViewTap: function() {
@@ -51,9 +52,9 @@ Page({
       hasUserInfo: true
     })
   },
-  clickMe: function () {
+  finishUserInfo: function () {
     wx.navigateTo({
-      url: '../first_page/first_page'
+      url: '../user_info/user_info'
     })
     
     // wx.request({

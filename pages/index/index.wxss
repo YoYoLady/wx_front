@@ -19,3 +19,22 @@
 .usermotto {
   margin-top: 200px;
 }
+
+.head2_text_left {
+  margin-left: 5px;
+  text-align: left;
+  color:green;
+}
+
+.button-sp-area{
+    margin: 0 auto;
+    padding-top: 10px;
+    width: 40%;
+}
+
+.text_desc {
+  margin-left: 5px;
+  color: gray;
+}
+
+
