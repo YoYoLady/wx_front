@@ -53,26 +53,31 @@ Page({
     })
   },
   finishUserInfo: function () {
-    wx.navigateTo({
-      url: '../user_info/user_info'
-    })
+    // wx.navigateTo({
+    //   url: '../user_info/user_info'
+    // }),
     
-    // wx.request({
-    //   url: 'https://zhili.pub:8000/user/add', //仅为示例，并非真实的接口地址
-    //   data: {
-    //     wx_id: 'yu2',
-    //     user_id : '111',
-    //     user_name : 'shengyu',
-    //     wx_name : 'dfsa'
-    //   },
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success(res) {
-    //     console.log("res" + res)
-    //     this.setData({ msg: "send user message to back" })
-    //   }
-    // })
+    wx.request({
+      url: 'http://localhost:3000', //仅为示例，并非真实的接口地址
+      data: {
+        wx_id: 'yu2',
+        user_id : '111',
+        user_name : 'shengyu',
+        wx_name : 'dfsa'
+      },
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success(res) {
+        console.log("res" + res)
+        var output = "";
+        for (var i in res) {
+          var property = res[i];
+          output += i + " = " + property + "\n";
+        }
+        console.log(output);
+      }
+    })
   },
   printObj: function (obj) {
     var output = "";
@@ -81,5 +86,12 @@ Page({
       output += i + " = " + property + "\n";
     }
     console.log(output);
+  },
+
+  beginEvaluate: function () {
+    wx.navigateTo({
+      url: '../holland/holland'
+    })
   }
+
 })

@@ -1,0 +1,8 @@
+
+
+.button-sp-area{
+    margin-left: 80px;
+    padding-top: 80px;
+    width: 40%;
+}
+

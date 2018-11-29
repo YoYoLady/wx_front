@@ -4,20 +4,23 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": true,
+		"uglifyFileName": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.4.1",
 	"appid": "wxd35590d8a59be9df",
 	"projectname": "Wechat",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"cloudfunctionRoot": "functions/",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -35,8 +38,5 @@
 			"current": -1,
 			"list": []
 		}
-	},
-  
-  "cloudfunctionRoot": "./functions/"
-  
+	}
 }

@@ -15,25 +15,8 @@ Page({
       { name: '一年级', value: '1' },
       { name: '二年级', value: '2' },
       { name: '三年级', value: '3' },
-    ],
-    checkboxItems: [
-      { name: 'standard is dealt for u.', value: '0', checked: true },
-      { name: 'standard is dealicient for u.', value: '1' }
-    ],
-
-    date: "2016-09-01",
-    time: "12:01",
-
-    countryCodes: ["+86", "+80", "+84", "+87"],
-    countryCodeIndex: 0,
-
-    countries: ["中国", "美国", "英国"],
-    countryIndex: 0,
-
-    accounts: ["微信号", "QQ", "Email"],
-    accountIndex: 0,
-
-    isAgree: false
+    ]
+  
   },
 
   bindTagRadio: function() {
@@ -77,46 +60,11 @@ Page({
     this.setData({
       radioItems: radioItems
     });
-    //TODO:: 发送学校信息
+  },
+
+  beginEvaluate: function () {
     wx.navigateTo({
-      url: '../holland/holland?choseQuestionBank=霍兰德兴趣测试'
-    });
-  },
-
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value
+      url: '../holland/holland'
     })
-  },
-  bindTimeChange: function (e) {
-    this.setData({
-      time: e.detail.value
-    })
-  },
-  bindCountryCodeChange: function (e) {
-    console.log('picker country code 发生选择改变，携带值为', e.detail.value);
-
-    this.setData({
-      countryCodeIndex: e.detail.value
-    })
-  },
-  bindCountryChange: function (e) {
-    console.log('picker country 发生选择改变，携带值为', e.detail.value);
-
-    this.setData({
-      countryIndex: e.detail.value
-    })
-  },
-  bindAccountChange: function (e) {
-    console.log('picker account 发生选择改变，携带值为', e.detail.value);
-
-    this.setData({
-      accountIndex: e.detail.value
-    })
-  },
-  bindAgreeChange: function (e) {
-    this.setData({
-      isAgree: !!e.detail.value.length
-    });
   }
 });

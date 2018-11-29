@@ -1,20 +1,22 @@
 var that;
-
+var app = getApp();
 
 Page({
   
-
   data: {
-    choseQuestionBank: '',
+    choseQuestionBank: 'holland_insteresting_evaluation',
     currentUserId: null,
     questionList:[],
     nowQuestion:[],
-    nowQuestionNumber:'',
     choseCharacter:'',
-    score:0,
     // blank:"blank",
-    newMultiQuestionList:[],
-    loading:true
+    loading:true,
+    currentQuestionNo: 0,
+    totalQuestionNum: 40,
+    initialNo: 100000,
+    resultCount:{"R":0, "A":0, "I":0, "S":0, "E":0, "C":0},
+    smallBatchNo: 0
+
   },
 
   
@@ -24,110 +26,92 @@ Page({
     that.setData({
       choseQuestionBank: choseQuestionBank
     });
-    //var currentUser = Bmob.User.current();
-    //var currentUserId = getApp.userInfo.id
-    var choseQuestionBank = that.data.choseQuestionBank;
-    var loadQuestionBank;
-    var questionList=new Array();
-    if (choseQuestionBank != ""){
-      loadQuestionBank="holland";
-      console.log("holland insteresting test!");
-    }
-    var newSingleQuestionList = [{title : '是否装配修理电器或玩具', options : ['是', '否'], attributes : {}},
-        {title : '修理自行车 ', options : ['是', '否'], attributes : {}}]
-    that.setData({
-        questionList: newSingleQuestionList,
-        nowQuestion: newSingleQuestionList[0],
-        nowQuestionNumber:0,
-        loading : false
-    });
-    // var QuestionBank = Bmob.Object.extend(loadQuestionBank);
-    // var querySingleQuestionBank = new Bmob.Query(QuestionBank);
-    // querySingleQuestionBank.equalTo("type", "SC");
-    // querySingleQuestionBank.find({
-    //   success: function (results) {
-    //     console.log("共查询到 " + results.length + " 条记录");
-    //     for (var i = 0; i < results.length; i++) {
-    //       questionList.push(results[i])
-    //       questionList[i].attributes.userChose = "空";
-    //     }
-    //     var newSingleQuestionList = that.getRandomSingleChoice(questionList,20)
-    //     that.setData({
-    //       questionList: newSingleQuestionList,
-    //       nowQuestion: newSingleQuestionList[0],
-    //       nowQuestionNumber:0
-    //     });
-    //   },
-    //   error: function (error) {
-    //     console.log("查询失败: " + error.code + " " + error.message);
-    //   }
-    // });
 
-
+    // 初始化第一批题目
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('question_bank_test').where({
+        question_id: _.lte(that.data.initialNo + 20)
+      }).get({
+        success: function (res) {
+          console.log(res.data)
+          that.setData({
+            questionList: res.data,
+            nowQuestion: res.data[0],
+            currentQuestionNo: 0,
+            loading : false
+          });
+        }
+    })
+    
+    
   },
 
+  getNextQuestions: function (beginNum) {
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('question_bank_test').where({
+      question_id: _.lte(beginNum + 21).and(_.gt(beginNum + 1))
+    }).get({
+      success: function (res) {
+        console.log(res.data)
+        var currentNo = that.data.currentQuestionNo + 1
+        that.setData({
+          questionList: res.data,
+          nowQuestion: res.data[0],
+          currentQuestionNo: currentNo
+        });
+      }
+    })
+  },
 
   onShow: function () {
-  
   },
 
-  choseA:function(){
-      var questionList = that.data.questionList;
-      var nowQuestionNumber = that.data.nowQuestionNumber;
-      getApp().globalData.score++;
+  chose : function(){
+    var questionList = that.data.questionList
+    var classCharacter = questionList[that.data.smallBatchNo].evaluation_attr
       // var score = that.data.score + 1;
-      questionList[nowQuestionNumber].attributes.answerResult = "correct";
-      questionList[nowQuestionNumber].attributes.userChose = "A";
-      that.setData({
-        questionList: questionList,
-        choseCharacter: "A",
-        // score:score,
-      });
-      that.nextQuestion = setTimeout(function () {
-        if (nowQuestionNumber==1){
-          that.setData({
-            nowQuestion: questionList[nowQuestionNumber],
-            nowQuestionNumber: nowQuestionNumber,
-          });
-        }
-        else if (nowQuestionNumber != 1){
-          var nextQuestionNumber = nowQuestionNumber + 1; 
-          that.setData({
-            nowQuestion: questionList[nextQuestionNumber],
-            nowQuestionNumber: nextQuestionNumber,
-          });
-        }
-      }, 300);
-      that.overSingleChoice(nowQuestionNumber);
-  },
+      console.log(classCharacter)
+      that.data.resultCount[classCharacter]++
 
-  // frontQuestion:function(){
-  //   var questionList = that.data.questionList;
-  //   var frontQuestionNumber = that.data.nowQuestionNumber-1;
-  //   that.setData({
-  //     nowQuestion: questionList[frontQuestionNumber],
-  //     nowQuestionNumber: frontQuestionNumber,
-  //   })
-  //   console.log(that.data.questionList)
-  // },
+      // TODO: 下个批次获取题目
+    var currentQuestionNo = that.data.currentQuestionNo
+    if (currentQuestionNo < that.data.totalQuestionNum - 1) {
+      if (that.data.smallBatchNo < 19) {
+        that.data.smallBatchNo = that.data.smallBatchNo + 1
+        currentQuestionNo = currentQuestionNo + 1
+        that.setData({
+          nowQuestion: questionList[that.data.smallBatchNo],
+          currentQuestionNo: currentQuestionNo,
+        });
+      } else {
+        that.data.smallBatchNo = 0
+        that.getNextQuestions(that.data.initialNo + currentQuestionNo)
+      }
+    } else {
+      that.finishChose(currentQuestionNo);
+    }
+      
+  },
 
   afterQuestion: function () {
-    var nowQuestionNumber = that.data.nowQuestionNumber
+    var currentQuestionNo = that.data.currentQuestionNo
     var questionList = that.data.questionList;
-    var afterQuestionNumber = nowQuestionNumber + 1;
-    if (questionList[nowQuestionNumber].attributes.answerResult==null){
-      questionList[nowQuestionNumber].attributes.answerResult = "blank";
-      questionList[nowQuestionNumber].attributes.userChose = "空";
+    var afterQuestionNumber = currentQuestionNo + 1;
+    if (questionList[currentQuestionNo].attributes.answerResult==null){
+      questionList[currentQuestionNo].attributes.answerResult = "blank";
+      questionList[currentQuestionNo].attributes.userChose = "空";
       that.setData({
         nowQuestion: questionList[afterQuestionNumber],
-        nowQuestionNumber: afterQuestionNumber,
+        currentQuestionNo: afterQuestionNumber,
         questionList: questionList
       })
     }
-    else if (questionList[nowQuestionNumber].attributes.answerResult != null){
+    else if (questionList[currentQuestionNo].attributes.answerResult != null){
       that.setData({
         nowQuestion: questionList[afterQuestionNumber],
-        nowQuestionNumber: afterQuestionNumber,
+        currentQuestionNo: afterQuestionNumber,
       })
     }
     console.log(that.data.questionList)
@@ -135,20 +119,18 @@ Page({
 
   answerCard:function(){
     getApp().globalData.singleChoiceAnswerNow = that.data.questionList,
-    getApp().globalData.multiChoiceAnswerNow = that.data.newMultiQuestionList;
     wx.navigateTo({
       url: '../answerCard/answerCard'
     });
   },
 
-  overSingleChoice:function(questionNumber){
-    getApp().globalData.singleChoiceAnswerNow = that.data.questionList;
-    getApp().globalData.multiChoiceAnswerNow = that.data.newMultiQuestionList;
-    if (questionNumber==1){
-      wx.redirectTo({
-        url: '../holland_result/holland_result'
-      });
-    }
+  finishChose : function(questionNumber){
+    console.log(questionNumber)
+    console.log(that.data.resultCount)
+    wx.redirectTo({
+      url: '../holland_result/holland_result'
+    });
+    
   }
  
 })

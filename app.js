@@ -3,7 +3,6 @@ App({
   globalData: {
     userInfo: null,
     singleChoiceAnswerNow: [],
-    multiChoiceAnswerNow: [],
     choseQuestionBank: '',
     result: ''
   },
@@ -46,5 +45,9 @@ App({
         }
       }
     })
-  }
+    wx.cloud.init({
+      traceUser: true
+    })
+  },
+
 })

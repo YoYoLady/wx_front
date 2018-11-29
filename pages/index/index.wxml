@@ -29,6 +29,6 @@
   </text>
   </view>
   <view class="button-sp-area">
-    <button class="weui-btn" type="warn" plain="true">进入评测</button>
+    <button class="weui-btn" type="warn" plain="true" bindtap="beginEvaluate">进入评测</button>
   </view>
 </view>

@@ -14,7 +14,7 @@
                 </label>
             </radio-group>
             <view class="weui-cell weui-cell_link">
-                <view class="weui-cell__bd" bindtap='bindTagRadio'>添加更多</view>
+                <view class="weui-cell__bd" bindtap='bindTagRadio'>添加学校</view>
                 <modal id="modal" hidden="{{hiddenmodalput}}" title="添加学校" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
                   <input type='text' placeholder="这里写学校名称" auto-focus/>
                 </modal>
@@ -36,8 +36,8 @@
                 </label>
             </radio-group>
     </view>
-  <!-- 手机号   -->
 
+  <!-- 手机号   -->
   <view class="weui-cells__title">其他信息</view>
       <view class="weui-cells weui-cells_after-title">
           <view class="weui-cell weui-cell_input">
@@ -49,4 +49,9 @@
               </view>
           </view>
       </view>
+
+  <!--  开始测试   -->
+  <view class="button-sp-area">
+    <button class="weui-btn" type="primary" plain="false" bindtap="beginEvaluate">开始评测</button>
+  </view>      
 </view>
