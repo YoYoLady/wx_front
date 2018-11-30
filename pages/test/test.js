@@ -31,14 +31,32 @@ Page({
     //   }
     // });
 
-    const db = wx.cloud.database()
-    const _ = db.command
-    db.collection('question_bank_test').where({
-      question_id: _.lte(100040).and(_.gt(100020))
-    }).get({
-        success: function (res) {
-          console.log(res.data[2])
-        }
+    // const db = wx.cloud.database()
+    // const _ = db.command
+    // db.collection('question_bank_test').where({
+    //   question_id: _.lte(100040).and(_.gt(100020))
+    // }).get({
+    //     success: function (res) {
+    //       console.log(res.data[2])
+    //     }
+    //   })
+
+
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'add',
+      // 传给云函数的参数
+      data: {
+        a: 77,
+        b: 2,
+      },
+    })
+      .then(res => {
+        console.log(res.result) // 3
       })
+      .catch(console.error)
+
   }
+
+
 })

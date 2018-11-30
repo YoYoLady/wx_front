@@ -19,13 +19,13 @@
  
   <view class='questionOption'>
     <view class='item'>
-      <view class='correctCharacter character' wx:if="{{questionList[currentQuestionNo].userChose=='A'}}" bindtap='chose'>A</view> 
-      <view class='blankCharacter character' wx:if="{{questionList[currentQuestionNo].answerResult==null||questionList[currentQuestionNo].answerResult=='blank'||questionList[currentQuestionNo].userChose!='A'}}" bindtap='chose'>A</view> 
+      <view class='correctCharacter character' wx:if="{{questionList[currentQuestionNo].userChose=='A'}}" bindtap='choseOptionA'>A</view> 
+      <view class='blankCharacter character' wx:if="{{questionList[currentQuestionNo].answerResult==null||questionList[currentQuestionNo].answerResult=='blank'||questionList[currentQuestionNo].userChose!='A'}}" bindtap='choseOptionA'>A</view> 
       <view class='option'>是</view>
     </view>
     <view class='item'>
-<view class='correctCharacter character' wx:if="{{questionList[currentQuestionNo].userChose=='B'}}" bindtap='chose'>B</view> 
-      <view class='blankCharacter character' wx:if="{{questionList[currentQuestionNo].answerResult==null||questionList[currentQuestionNo].answerResult=='blank'||questionList[currentQuestionNo].userChose!='B'}}" bindtap='chose'>B</view> 
+<view class='correctCharacter character' wx:if="{{questionList[currentQuestionNo].userChose=='B'}}" bindtap='choseOptionB'>B</view> 
+      <view class='blankCharacter character' wx:if="{{questionList[currentQuestionNo].answerResult==null||questionList[currentQuestionNo].answerResult=='blank'||questionList[currentQuestionNo].userChose!='B'}}" bindtap='choseOptionB'>B</view> 
       <view class='option'>否</view>
     </view>
   </view>
@@ -42,11 +42,11 @@
     </view>
   </view> -->
 
-  <view class='bottom'>
+  <!-- <view class='bottom'>
     <view class='middle' bindtap='answerCard'>
       <image class='leftIcon' src='../../images/1-01.png'></image>
     </view>
-  </view>
+  </view> -->
 
 
 </view>

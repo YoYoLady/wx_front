@@ -43,6 +43,9 @@ Page({
         }
       })
     }
+
+
+
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -52,33 +55,35 @@ Page({
       hasUserInfo: true
     })
   },
+
   finishUserInfo: function () {
-    // wx.navigateTo({
-    //   url: '../user_info/user_info'
-    // }),
-    
-    wx.request({
-      url: 'http://localhost:3000', //仅为示例，并非真实的接口地址
-      data: {
-        wx_id: 'yu2',
-        user_id : '111',
-        user_name : 'shengyu',
-        wx_name : 'dfsa'
-      },
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success(res) {
-        console.log("res" + res)
-        var output = "";
-        for (var i in res) {
-          var property = res[i];
-          output += i + " = " + property + "\n";
-        }
-        console.log(output);
-      }
+    wx.navigateTo({
+      url: '../user_info/user_info'
     })
+    // wx.request({
+    //   url: 'http://localhost:3000', //仅为示例，并非真实的接口地址
+    //   data: {
+    //     wx_id: 'yu2',
+    //     user_id : '111',
+    //     user_name : 'shengyu',
+    //     wx_name : 'dfsa'
+    //   },
+    //   header: {
+    //     'content-type': 'application/json' // 默认值
+    //   },
+    //   success(res) {
+    //     console.log("res" + res)
+    //     var output = "";
+    //     for (var i in res) {
+    //       var property = res[i];
+    //       output += i + " = " + property + "\n";
+    //     }
+    //     console.log(output);
+    //   }
+    // })
+  
   },
+
   printObj: function (obj) {
     var output = "";
     for (var i in obj) {
@@ -92,6 +97,30 @@ Page({
     wx.navigateTo({
       url: '../holland/holland'
     })
+  },
+
+  resultReport : function() {
+
+    wx.navigateTo({
+      url: '../holland_result/holland_result'
+    })
+
+    // //获取以前的resultcode, 调用云函数
+    // wx.cloud.callFunction({
+    //   // 云函数名称
+    //   name: 'getUserAnswer',
+    //   // 传给云函数的参数
+    //   data: {}
+    // })
+    //   .then(res => {
+    //     console.log("call get user answer success!")
+    //     console.log(res.result) // 3
+    //     wx.navigateTo({
+    //       url: '../holland_result/holland_result?result_code=' + res.result.result_code
+    //     })
+    //   })
+    //   .catch(console.error)
+
   }
 
 })

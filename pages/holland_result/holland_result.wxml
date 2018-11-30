@@ -6,9 +6,9 @@
       <text>您的评测结果是：</text>
     </view>
     <view class='content'>
-      <text>RIA
-适合的典型专业有：冶金工程、纺织工程、金属材料工程、船舶与海洋工程、海洋技术、林学。
-适合的典型职业有：牙科技术员、陶工、建筑设计员、模型工、细木工、制作链条人员。</text>
+      <text>code: {{resultCode}}  
+      </text>
+      <text>{{resultDesc}}</text>
     </view>
   </view>
 

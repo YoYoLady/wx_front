@@ -11,10 +11,10 @@
     <button class="weui-btn" type="primary" plain="true" bindtap="finishUserInfo" >1.完善信息</button>
   </view>
     <view class="button-sp-area">
-    <button class="weui-btn" type="primary" plain="true">2.参与评测</button>
+    <button class="weui-btn" type="primary" plain="true" bindtap="beginEvaluate">2.参与评测</button>
   </view>
     <view class="button-sp-area">
-    <button class="weui-btn" type="primary" plain="true">3.评测报告</button>
+    <button class="weui-btn" type="primary" plain="true" bindtap="resultReport">3.评测报告</button>
   </view>
   <view class="head2_text_left">
     <text>评测须知：</text>
@@ -29,6 +29,6 @@
   </text>
   </view>
   <view class="button-sp-area">
-    <button class="weui-btn" type="warn" plain="true" bindtap="beginEvaluate">进入评测</button>
+    <button class="weui-btn" type="warn" plain="true" bindtap="beginEvaluate">直接评测</button>
   </view>
 </view>

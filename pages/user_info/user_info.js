@@ -12,9 +12,9 @@ Page({
       { name: '杭州西湖区文新中学', value: '1'}
     ],
     radioGradeItems: [
-      { name: '一年级', value: '1' },
-      { name: '二年级', value: '2' },
-      { name: '三年级', value: '3' },
+      { name: '一年级', value: '2' },
+      { name: '二年级', value: '3' },
+      { name: '三年级', value: '4' },
     ]
   
   },
@@ -59,6 +59,19 @@ Page({
 
     this.setData({
       radioItems: radioItems
+    });
+  },
+
+  radioGradeChange: function (e) {
+    console.log('radio发生change事件，携带value值为：', e.detail.value);
+
+    var radioItems = this.data.radioGradeItems;
+    for (var i = 0, len = radioItems.length; i < len; ++i) {
+      radioItems[i].checked = radioItems[i].value == e.detail.value;
+    }
+
+    this.setData({
+      radioGradeItems: radioItems
     });
   },
 

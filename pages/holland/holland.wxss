@@ -20,7 +20,7 @@ page{
   display:flex;
   align-items:center;
   float: left;
-  width: 70%;
+  width: 85%;
   height: 100%;
 }
 
@@ -28,7 +28,7 @@ page{
   display:flex;
   align-items:center;
   float: right;
-  width: 50%;
+  width: 30%;
   height: 100%;
 }
 
@@ -47,7 +47,7 @@ page{
 }
 
 .questionTitle{
-    color: #595757;
+  color: #595757;
   margin: 30rpx 20rpx 0rpx 20rpx;
   font-size: 35rpx;
 }

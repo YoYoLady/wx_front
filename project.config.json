@@ -20,7 +20,7 @@
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
-	"cloudfunctionRoot": "functions/",
+	"cloudfunctionRoot": "./functions/",
 	"condition": {
 		"search": {
 			"current": -1,
