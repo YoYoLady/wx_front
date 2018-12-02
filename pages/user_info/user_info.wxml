@@ -45,7 +45,7 @@
                   <view class="weui-label">手机号：</view>
               </view>
               <view class="weui-cell__bd">
-                    <input class="weui-input" placeholder="输入手机号，可以接收报告"/>
+                    <input class="weui-input"  bindblur="getUserMobile" placeholder="输入手机号，可以接收报告"/>
               </view>
           </view>
       </view>

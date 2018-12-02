@@ -9,22 +9,47 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   let { OPENID, APPID, UNIONID } = cloud.getWXContext();
 
-  return db.collection('user_info').doc(OPENID).set({
-    // data 字段表示需新增的 JSON 数据
-    data: {
-      user_name: event.nickName,
-      gender: event.gender,
-      wx_name: event.nickName,
-      wx_openid: OPENID,
-      wx_unionid: UNIONID,
-      gmt_created: new Date(),
-      gmt_modified: new Date(),
-      edu_city: event.city,
-      edu_province: event.province
+  return db.collection('user_info').doc(OPENID).get().then(res => {
+    // res.data 包含该记录的数据
+    console.log(res.data)
+    // insert new user
+    if (res.data.length == 0) {
+      db.collection('user_info').doc(OPENID).set({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          user_name: event.nickName,
+          gender: event.gender,
+          wx_name: event.nickName,
+          wx_openid: OPENID,
+          wx_unionid: UNIONID,
+          gmt_created: new Date(),
+          gmt_modified: new Date(),
+          edu_city: event.city,
+          edu_province: event.province
+        }
+      }).then(res => {
+          console.log(res)
+        })
+    } else {
+      db.collection('user_info').doc(OPENID).update({
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          user_name: event.nickName,
+          gender: event.gender,
+          wx_name: event.nickName,
+          wx_openid: OPENID,
+          wx_unionid: UNIONID,
+          gmt_created: new Date(),
+          gmt_modified: new Date(),
+          edu_city: event.city,
+          edu_province: event.province
+        }
+      }).then(res => {
+        console.log(res)
+      })
     }
+
   })
-    .then(res => {
-      console.log(res)
-    })
+
 
 }

@@ -13,7 +13,7 @@
   </view>
 
 
-  <view class='startAnswer' bindtap='action'>
+  <view class='startAnswer' bindtap='finishEvaluate'>
     <image class='handIcon' src='../../images/hand.png' ></image>
     结束
   </view>

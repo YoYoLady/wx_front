@@ -38,7 +38,7 @@ onLoad : function(options) {
 
   var resultCode = options.resultCode
   
-  console.log(resultCode)
+  console.log("holland result code:" + resultCode)
   // 获取结果
   const db = wx.cloud.database()
   const _ = db.command
@@ -63,16 +63,11 @@ onLoad : function(options) {
 
 },
 
-action: function () {
+finishEvaluate: function () {
 
   wx.redirectTo({
-    url: '../multiChoiceDetail/multiChoiceDetail'
-  });
-},
-
-answerCard: function () {
-  wx.navigateTo({
-    url: '../answerCard/answerCard'
+    url: '../index/index'
   });
 }
+
 })

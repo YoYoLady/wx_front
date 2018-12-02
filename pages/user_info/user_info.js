@@ -5,7 +5,6 @@ const app = getApp()
 Page({
   data: {
     hiddenmodalput: true,
-    showTopTips: false,
 
     radioItems: [
       { name: '杭州市二中', value: '0' },
@@ -38,17 +37,7 @@ Page({
     })
   },
 
-  showTopTips: function () {
-    var that = this;
-    this.setData({
-      showTopTips: true
-    });
-    setTimeout(function () {
-      that.setData({
-        showTopTips: false
-      });
-    }, 3000);
-  },
+
   radioChange: function (e) {
     console.log('radio发生change事件，携带value值为：', e.detail.value);
 
@@ -61,18 +50,7 @@ Page({
       }
     }
 
-    //调用云函数，更新后台数据库
-    wx.cloud.callFunction({
-      // 云函数名称
-      name: 'updateUserInfo',
-      // 传给云函数的参数
-      data: { edu_school: edu_school}
-    })
-      .then(res => {
-        console.log("call updateUserInfo success!")
-        console.log(res.result) // 3
-      })
-      .catch(console.error)
+    this.callUpdateUser({ edu_school: edu_school })
     
     this.setData({
       radioItems: radioItems
@@ -83,13 +61,38 @@ Page({
     console.log('radio发生change事件，携带value值为：', e.detail.value);
 
     var radioItems = this.data.radioGradeItems;
+    var edu_grade = ''
     for (var i = 0, len = radioItems.length; i < len; ++i) {
       radioItems[i].checked = radioItems[i].value == e.detail.value;
+      edu_grade = radioItems[i].name
     }
+    
+    this.callUpdateUser({ edu_grade: edu_grade })
 
     this.setData({
       radioGradeItems: radioItems
     });
+  },
+
+  callUpdateUser : function(updateData) {
+    //调用云函数，更新后台数据库
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'updateUserInfo',
+      // 传给云函数的参数
+      data: updateData
+    })
+      .then(res => {
+        console.log("call updateUserInfo success!")
+        console.log(res.result) // 3
+      })
+      .catch(console.error)
+  },
+
+  getUserMobile : function(e) {
+    console.log('input(mobile) 获取value：', e.detail.value);
+    var upData = {mobile : e.detail.value}
+    this.callUpdateUser(upData)
   },
 
   beginEvaluate: function () {
