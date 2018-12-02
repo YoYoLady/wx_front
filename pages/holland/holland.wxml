@@ -21,17 +21,17 @@
     <view class='item'>
       <view class='correctCharacter character' wx:if="{{questionList[currentQuestionNo].userChose=='A'}}" bindtap='choseOptionA'>A</view> 
       <view class='blankCharacter character' wx:if="{{questionList[currentQuestionNo].answerResult==null||questionList[currentQuestionNo].answerResult=='blank'||questionList[currentQuestionNo].userChose!='A'}}" bindtap='choseOptionA'>A</view> 
-      <view class='option'>是</view>
+      <view class='option' bindtap='choseOptionA'>是</view>
     </view>
     <view class='item'>
 <view class='correctCharacter character' wx:if="{{questionList[currentQuestionNo].userChose=='B'}}" bindtap='choseOptionB'>B</view> 
       <view class='blankCharacter character' wx:if="{{questionList[currentQuestionNo].answerResult==null||questionList[currentQuestionNo].answerResult=='blank'||questionList[currentQuestionNo].userChose!='B'}}" bindtap='choseOptionB'>B</view> 
-      <view class='option'>否</view>
+      <view class='option' bindtap='choseOptionA'>否</view>
     </view>
   </view>
   <!-- <view class='frontQuestion' wx:if="{{currentQuestionNo!=0}}"  bindtap='frontQuestion'>←</view> -->
 
-  <view class='lastQuestion' wx:if="{{currentQuestionNo!=20}}"  bindtap='afterQuestion'>跳过此题</view>
+  <!-- <view class='lastQuestion' wx:if="{{currentQuestionNo!=20}}"  bindtap='afterQuestion'>跳过此题</view> -->
 
   <!-- <view class='bottom'>
     <view class='left' bindtap='answerCard'>

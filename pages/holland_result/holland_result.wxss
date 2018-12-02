@@ -16,7 +16,7 @@ page{
 }
 
 .content{
-  font-size: 40rpx;
+  font-size: 35rpx;
   color: #595758;
   margin: 30rpx 20rpx 0rpx 30rpx;
 }

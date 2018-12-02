@@ -88,10 +88,11 @@ Page({
     var questionList = that.data.questionList
     var classCharacter = questionList[that.data.smallBatchNo].evaluation_attr
     // var score = that.data.score + 1;
-    console.log(classCharacter)
-    that.data.resultCount[classCharacter]++
+    if (option_value == 1) {
+      that.data.resultCount[classCharacter]++
+    }
 
-      var userAnswer = that.data.answerDetail
+    var userAnswer = that.data.answerDetail
     var currentQuestionId = questionList[that.data.smallBatchNo].question_id
     userAnswer[currentQuestionId] = option_value
 
@@ -109,6 +110,7 @@ Page({
       } else {
         that.data.smallBatchNo = 0
         that.getNextQuestions(that.data.initialNo + currentQuestionNo, userAnswer)
+        console.log(that.data.resultCount)
       }
     } else {
       that.finishChose(currentQuestionNo);

@@ -81,7 +81,7 @@ page{
 
 .option{
   color: #595757;
-  font-size: 35rpx;
+  font-size: 40rpx;
   float: left;
   margin-left: 20rpx;
   width: 80%;
