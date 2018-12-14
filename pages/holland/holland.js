@@ -49,7 +49,7 @@ Page({
     const db = wx.cloud.database()
     const _ = db.command
     db.collection('holland_question').where({
-      question_id: _.lte(1000020)
+      question_id: _.lte(that.data.currentQuestionNo + 20)
     }).get({
       success: function(res) {
         
@@ -86,16 +86,6 @@ Page({
         });
       }
     })
-  },
-
-  onShow: function() {},
-
-  choseOptionA: function() {
-    that.chose(1)
-  },
-
-  choseOptionB: function() {
-    that.chose(0)
   },
 
   chose: function(e) {

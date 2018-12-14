@@ -5,6 +5,8 @@
     "pages/user_info/user_info",
     "pages/holland/holland",
     "pages/holland_result/holland_result",
+    "pages/MBTI/MBTI",
+    "pages/competence/competence",
     "pages/evaluate_index/evaluate_index"
   ],
   "window":{

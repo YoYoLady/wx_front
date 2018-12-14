@@ -1,3 +1,5 @@
+/* pages/competence/competence.wxss */
+
 @import "../../style/loading.wxss";
 
 page{
@@ -16,7 +18,7 @@ page{
 }
 
 .topLeft{
-  font-size:30rpx;
+  font-size:35rpx;
   display:flex;
   align-items:center;
   float: left;
@@ -81,7 +83,7 @@ page{
 
 .option{
   color: #595757;
-  font-size: 38rpx;
+  font-size: 40rpx;
   float: left;
   margin-left: 20rpx;
   width: 80%;

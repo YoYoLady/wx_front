@@ -4,45 +4,44 @@ var app = getApp();
 Page({
 
   data: {
-    choseQuestionBank: 'MBTI_evaluation',
+    choseQuestionBank: 'competence_evaluation',
     currentUserId: null,
     questionList: [],
     nowQuestion: [],
     choseCharacter: '',
+    // blank:"blank",
     loading: true,
     currentQuestionNo: 0,
-    totalQuestionNum: 93,
+    totalQuestionNum: 39,
     initialNo: 0,
     resultCount: {
-      "E": 0,
-      "I": 0,
-      "S": 0,
-      "N": 0,
-      "T": 0,
-      "F": 0,
-      "J": 0,
-      "P": 0
+      "一般学习能力": 0,
+      "言语能力倾向": 0,
+      "计算能力倾向": 0,
+      "空间判断能力": 0,
+      "形态知觉": 0,
+      "职员能力倾向": 0,
+      "眼手运动协调":0,
+      "手指灵巧":0
     },
     answerDetail: {},
     smallBatchNo: 0,
-    options: []
+    options: [],
+    weight: {"A":1, "B":2, "C":3, "D":4, "E":5}
   },
 
-  genOptions: function(optionsStr) {
+  genOptions: function (optionsStr) {
     var curOptions = optionsStr.split(';')
     var ret = []
     curOptions.forEach((data) => {
       var arr = data.split(':')
-      var one = {
-        "index": arr[0],
-        "body": arr[1]
-      }
+      var one = { "index": arr[0], "body": arr[1] }
       ret.push(one);
     });
     return ret;
   },
 
-  onLoad: function() {
+  onLoad: function () {
     that = this;
     var choseQuestionBank = getApp().globalData.choseQuestionBank;
     that.setData({
@@ -52,10 +51,10 @@ Page({
     // 初始化第一批题目
     const db = wx.cloud.database()
     const _ = db.command
-    db.collection('MBTI_question').where({
+    db.collection('competence_question').where({
       question_id: _.lte(that.data.currentQuestionNo + 20)
     }).get({
-      success: function(res) {
+      success: function (res) {
 
         var curOptions = that.genOptions(res.data[0].question_options)
         that.setData({
@@ -67,15 +66,17 @@ Page({
         });
       }
     })
+
+
   },
 
-  getNextQuestions: function(beginNum, userAnswer) {
+  getNextQuestions: function (beginNum, userAnswer) {
     const db = wx.cloud.database()
     const _ = db.command
-    db.collection('MBTI_question').where({
+    db.collection('competence_question').where({
       question_id: _.lte(beginNum + 21).and(_.gt(beginNum + 1))
     }).get({
-      success: function(res) {
+      success: function (res) {
         //console.log(res.data)
         var curOptions = that.genOptions(res.data[0].question_options)
         var currentNo = that.data.currentQuestionNo + 1
@@ -90,31 +91,16 @@ Page({
     })
   },
 
-  getClassLetter: function(weight, index) {
-    var arr = weight.split(';')
-    var letter1 = arr[0].split("-")[0]
-    if (arr[0].indexOf("A:1") != -1 && index == 'A') {
-      return letter1
-    }
-    if (arr[0].indexOf("B:1") != -1 && index == 'B') {
-      return letter1
-    }
-    var letter2 = arr[1].split("-")[0]
-    if (arr[1].indexOf("A:1") != -1 && index == 'A') {
-      return letter2
-    }
-    if (arr[1].indexOf("B:1") != -1 && index == 'B') {
-      return letter2
-    }
-  },
-
-  chose: function(e) {
+  chose: function (e) {
     var index = e.currentTarget.dataset.text
     console.log("选择：" + index)
     var questionList = that.data.questionList
+    var classCharacter = questionList[that.data.smallBatchNo].Competence_type
     // var score = that.data.score + 1;
-    var letter = that.getClassLetter(questionList[that.data.smallBatchNo].weight, index)
-    that.data.resultCount[letter] += 1
+
+    var value = that.data.weight[index]
+    that.data.resultCount[classCharacter] += value
+
 
     var userAnswer = that.data.answerDetail
     var currentQuestionId = questionList[that.data.smallBatchNo].question_id
@@ -144,12 +130,12 @@ Page({
 
   },
 
-  getResultCode: function(obj) {
+  getResultCode: function (obj) {
     var arr = []
     for (var i in obj) {
       arr.push(obj[i] + i);
     }
-    arr = arr.sort(function(a, b) {
+    arr = arr.sort(function (a, b) {
       var aNum = parseInt(a, 10)
       var bNum = parseInt(b, 10)
       return aNum - bNum
@@ -164,23 +150,23 @@ Page({
     return ret
   },
 
-  finishChose: function(questionNumber) {
+  finishChose: function (questionNumber) {
     console.log(questionNumber)
     console.log(that.data.resultCount)
     console.log(that.data.answerDetail)
-    var resultCode = that.getResultCode(that.data.resultCount)
+    var resultCode = '待定'
 
     // 调用云函数存入user answer
     wx.cloud.callFunction({
-        // 云函数名称
-        name: 'updateUserAnswer',
-        // 传给云函数的参数
-        data: {
-          result_code: resultCode,
-          user_answer_gather: that.data.resultCount,
-          user_answer_detail: that.data.answerDetail
-        }
-      })
+      // 云函数名称
+      name: 'updateUserAnswer',
+      // 传给云函数的参数
+      data: {
+        result_code: resultCode,
+        user_answer_gather: that.data.resultCount,
+        user_answer_detail: that.data.answerDetail
+      }
+    })
       .then(res => {
         console.log("call upload user answer success!")
         console.log(res.result) // 3
@@ -190,7 +176,7 @@ Page({
 
 
     wx.redirectTo({
-      url: '../hollandt/hollresult?resultCode=' + resultCode
+      url: '../holland_t/hollandsult?resultCode=' + resultCode
     });
 
   }
