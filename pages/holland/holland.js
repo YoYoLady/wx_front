@@ -12,8 +12,8 @@ Page({
     // blank:"blank",
     loading: true,
     currentQuestionNo: 0,
-    totalQuestionNum: 120,
-    initialNo: 100000,
+    totalQuestionNum: 84,
+    initialNo: 0,
     resultCount: {
       "R": 0,
       "A": 0,
@@ -23,10 +23,20 @@ Page({
       "C": 0
     },
     answerDetail: {},
-    smallBatchNo: 0
-
+    smallBatchNo: 0,
+    options: []
   },
 
+  genOptions: function(optionsStr) {
+    var curOptions = optionsStr.split(';')
+    var ret = []
+    curOptions.forEach((data) => {
+      var arr = data.split(':')
+      var one = {"index":arr[0], "body":arr[1]}
+      ret.push(one);
+    });
+    return ret;
+  },
 
   onLoad: function() {
     that = this;
@@ -38,16 +48,18 @@ Page({
     // 初始化第一批题目
     const db = wx.cloud.database()
     const _ = db.command
-    db.collection('question_bank_test').where({
-      question_id: _.lte(that.data.initialNo + 20)
+    db.collection('holland_question').where({
+      question_id: _.lte(1000020)
     }).get({
       success: function(res) {
-        console.log(res.data)
+        
+        var curOptions = that.genOptions(res.data[0].question_options)
         that.setData({
           questionList: res.data,
           nowQuestion: res.data[0],
           currentQuestionNo: 0,
-          loading: false
+          loading: false,
+          options: curOptions
         });
       }
     })
@@ -58,17 +70,19 @@ Page({
   getNextQuestions: function(beginNum, userAnswer) {
     const db = wx.cloud.database()
     const _ = db.command
-    db.collection('question_bank_test').where({
+    db.collection('holland_question').where({
       question_id: _.lte(beginNum + 21).and(_.gt(beginNum + 1))
     }).get({
       success: function(res) {
-        console.log(res.data)
+        //console.log(res.data)
+        var curOptions = that.genOptions(res.data[0].question_options)
         var currentNo = that.data.currentQuestionNo + 1
         that.setData({
           questionList: res.data,
           nowQuestion: res.data[0],
           currentQuestionNo: currentNo,
-          answerDetail: userAnswer
+          answerDetail: userAnswer,
+          options: curOptions
         });
       }
     })
@@ -84,17 +98,19 @@ Page({
     that.chose(0)
   },
 
-  chose: function(option_value) {
+  chose: function(e) {
+    var index = e.currentTarget.dataset.text
+    console.log("选择：" + index)
     var questionList = that.data.questionList
-    var classCharacter = questionList[that.data.smallBatchNo].evaluation_attr
+    var classCharacter = questionList[that.data.smallBatchNo].class_letter
     // var score = that.data.score + 1;
-    if (option_value == 1) {
-      that.data.resultCount[classCharacter]++
-    }
+    
+    that.data.resultCount[classCharacter] += parseInt(index)
+    
 
     var userAnswer = that.data.answerDetail
     var currentQuestionId = questionList[that.data.smallBatchNo].question_id
-    userAnswer[currentQuestionId] = option_value
+    userAnswer[currentQuestionId] = index
 
     // TODO: 下个批次获取题目
     var currentQuestionNo = that.data.currentQuestionNo
@@ -102,10 +118,12 @@ Page({
       if (that.data.smallBatchNo < 19) {
         that.data.smallBatchNo = that.data.smallBatchNo + 1
         currentQuestionNo = currentQuestionNo + 1
+        var curOptions = that.genOptions(questionList[that.data.smallBatchNo].question_options)
         that.setData({
           nowQuestion: questionList[that.data.smallBatchNo],
           currentQuestionNo: currentQuestionNo,
-          answerDetail: userAnswer
+          answerDetail: userAnswer,
+          options: curOptions
         });
       } else {
         that.data.smallBatchNo = 0
@@ -116,34 +134,6 @@ Page({
       that.finishChose(currentQuestionNo);
     }
 
-  },
-
-  afterQuestion: function() {
-    var currentQuestionNo = that.data.currentQuestionNo
-    var questionList = that.data.questionList;
-    var afterQuestionNumber = currentQuestionNo + 1;
-    if (questionList[currentQuestionNo].attributes.answerResult == null) {
-      questionList[currentQuestionNo].attributes.answerResult = "blank";
-      questionList[currentQuestionNo].attributes.userChose = "空";
-      that.setData({
-        nowQuestion: questionList[afterQuestionNumber],
-        currentQuestionNo: afterQuestionNumber,
-        questionList: questionList
-      })
-    } else if (questionList[currentQuestionNo].attributes.answerResult != null) {
-      that.setData({
-        nowQuestion: questionList[afterQuestionNumber],
-        currentQuestionNo: afterQuestionNumber,
-      })
-    }
-    console.log(that.data.questionList)
-  },
-
-  answerCard: function() {
-    getApp().globalData.singleChoiceAnswerNow = that.data.questionList,
-      wx.navigateTo({
-        url: '../answerCard/answerCard'
-      });
   },
 
   getResultCode: function(obj) {

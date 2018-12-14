@@ -1,0 +1,19 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">评测须知</view>
+        <view class="page__desc">共分为三类测试：
+                                 兴趣：****</view>
+    </view>
+  <view class="head2_text_left">
+    <text>评测流程：</text>
+  </view>
+  <view class="button-sp-area">
+    <button class="weui-btn" type="primary" plain="true" bindtap="beginHolland" >职业兴趣       </button>
+  </view>
+    <view class="button-sp-area">
+    <button class="weui-btn" type="primary" plain="true" bindtap="beginMBTI">职业性格         </button>
+  </view>
+    <view class="button-sp-area">
+    <button class="weui-btn" type="primary" plain="true" bindtap="beginCompetence">职业能力         </button>
+  </view>
+  </view>

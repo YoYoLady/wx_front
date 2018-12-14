@@ -70,7 +70,7 @@ Page({
 
   beginEvaluate: function () {
     wx.navigateTo({
-      url: '../holland/holland'
+      url: '../evaluate_index/evaluate_index'
     })
   },
 

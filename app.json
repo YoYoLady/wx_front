@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/user_info/user_info",
     "pages/holland/holland",
-    "pages/holland_result/holland_result"
+    "pages/holland_result/holland_result",
+    "pages/evaluate_index/evaluate_index"
   ],
   "window":{
     "backgroundTextStyle":"light",
