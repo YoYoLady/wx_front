@@ -1,21 +1,23 @@
 const app = getApp()
 
 Page({
+
   data: {
+
   },
   beginHolland: function () {
     wx.navigateTo({
-      url: '../holland/holland'
+      url: '../papers/paper?papertype=holland'
     })
   },
   beginMBTI: function () {
     wx.navigateTo({
-      url: '../MBTI/MBTI'
+      url: '../papers/paper?papertype=mbti'
     })
   },
   beginCompetence: function () {
     wx.navigateTo({
-      url: '../competence/competence'
+      url: '../papers/paper?papertype=gatb'
     })
   }
 })

@@ -7,10 +7,12 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   let { OPENID, APPID, UNIONID } = cloud.getWXContext();
+  
 
   return db.collection('user_answer').doc(OPENID).set({
     // data 字段表示需新增的 JSON 数据
     data: {
+      _id: OPENID,
       wx_openid: OPENID,
       wx_unionid: UNIONID,
       gmt_created: new Date(),

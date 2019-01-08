@@ -1,0 +1,45 @@
+<!--pages/papers/paper.wxml-->
+
+<loading wx:if="{{loading}}">
+  加载中...
+</loading>
+
+<view wx:if="{{show}}">
+
+  <view id='body' class='body' bindtap='bodyTap'> {{curQuestion.body}}</view>
+
+  <view id='editque' class='editque' wx:if="{{editque}}">
+
+    <view class="btnCon">
+      <view class="button-sp-area" bindtap='deleteQue'>删除题目</view>
+
+      <view class="button-sp-area" bindtap='confirmModify'>确定修改</view>
+
+      <view class="button-sp-area" bindtap='cancel'>取消修改</view>
+    </view>
+
+    <view style='margin-left: 20rpx;'>修改题目：</view>
+
+    <view class="itemView">
+      <input class="input" placeholder="{{curQuestion.body}}" bindinput="newQueInput" />
+    </view>
+
+
+  </view>
+
+  <view id='line' class='line'></view>
+
+  <!--当前的数目-->
+  <view id='num' class='nums'>
+    <view class='curnum'>{{curNum+1}}</view>
+    <view class='totalnum'>/ {{totalNum}}</view>
+  </view>
+
+  <!--选项-->
+  <view class='options' wx:for="{{curQuestion.options}}">
+    <view data-item="{{item}}" class='optionchoose' bindtap='choseOption'>{{item.op}}</view>
+    <view data-item="{{item}}" class='optioncontent' bindtap='choseOption'>{{item.content}}</view>
+  </view>
+
+
+</view>

@@ -1,0 +1,51 @@
+<loading wx:if="{{isloading}}">
+  加载中...
+</loading>
+
+<template name="mbItem">
+  <view id='mbcon' class='mbtopcon'>
+    <view class="lefttxt">{{lefttxt}}</view>
+    <view id='leftcon' class='mbitemcon mbleft'>
+      <view id='leftpertxt' class='leftpertxtbg mbitem' style='width:{{leftper}}'>{{leftper}}</view>
+    </view>
+    <view id='rightcon' class='mbitemcon mbright'>
+      <view id='reftpertxt' class='rightpertxtbg  mbitem' style='width:{{rightper}}'>{{rightper}}</view>
+    </view>
+    <view class="righttxt">{{righttxt}}</view>
+  </view>
+</template>
+
+<scroll-view wx:if="{{!isloading}}" scroll-y>
+
+  <view id='holland' wx:if="{{holland}}" class='marginTop'>
+    <view>您的职业兴趣评测结果是：{{hollandresult}}</view>
+    <view>{{hollanddes}}</view>
+
+  <canvas canvas-id="radarCanvas" class="canvas"></canvas>
+
+  </view>
+
+  <view id='mb' wx:if="{{mb}}" class='marginTop'>
+    <view>你的MBTI结果是：</view>
+    <view>{{mbresult}}</view>
+
+    <view class='content_item' wx:for="{{mbarr}}">
+      <template is="mbItem" data="{{...item}}" />
+    </view>
+
+
+
+  </view>
+
+
+  <view iid='gatb' wx:if="{{gatb}}" class='marginTop'>
+    <view>你的GATB结果是：</view>
+    <view>{{gatbresult}}</view>
+  </view>
+
+
+
+
+
+
+</scroll-view>

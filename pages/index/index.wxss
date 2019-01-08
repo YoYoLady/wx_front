@@ -1,9 +1,35 @@
 /**index.wxss**/
+
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+
+.authparent {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;/*垂直居中*/
+  justify-content: center;/*水平居中*/
+}
+
+.auth {
+  color: green;
+  width: auto;
+  height: auto;
+  margin: auto auto;
+  border: 1rpx solid green;
+}
+
+.auth::after{
+  border: 0px solid #bfbfbf;
+ 
+}
+
 
 .userinfo-avatar {
   width: 128rpx;
@@ -23,13 +49,13 @@
 .head2_text_left {
   margin-left: 5px;
   text-align: left;
-  color:green;
+  color: green;
 }
 
-.button-sp-area{
-    margin: 0 auto;
-    padding-top: 10px;
-    width: 40%;
+.button-sp-area {
+  margin: 0 auto;
+  padding: 40rpx;
+  width: 40%;
 }
 
 .text_desc {

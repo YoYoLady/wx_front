@@ -1,0 +1,12 @@
+<view class="splash">
+
+<!--背景图片-->
+<image class='splashbg' src="../../images/splash.jpg" mode="scaleToFill"></image>
+
+
+<!--如果没有授权的话还需要授权-->
+<button wx:if="{{hasInit&&canIUse&& !hasAuthorized}}" class="auth" open-type='getUserInfo' bindgetuserinfo='login'>{{authText}}</button>
+<!--显示广告事件-->
+<view  wx:if="{{hasInit}}" class="adtime" bindtap="skipad">{{adText}}</view>
+
+</view>
