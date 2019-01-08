@@ -380,22 +380,22 @@ Page({
         // 性格倾向 
         //E-I, S-N, T-F, J-P，结对性格中得分高的为当前结对的倾向
       case 'mbti':
-        if (factorStatics.get('E') > factorStatics.get('I')) {
+        if (factorStatics.get('E').scopes > factorStatics.get('I').scopes) {
           resultCode = resultCode + 'E';
         } else {
           resultCode = resultCode + 'I';
         }
-        if (factorStatics.get('S') > factorStatics.get('N')) {
+        if (factorStatics.get('S').scopes > factorStatics.get('N').scopes) {
           resultCode = resultCode + 'S';
         } else {
           resultCode = resultCode + 'N';
         }
-        if (factorStatics.get('T') > factorStatics.get('F')) {
+        if (factorStatics.get('T').scopes > factorStatics.get('F').scopes) {
           resultCode = resultCode + 'T';
         } else {
           resultCode = resultCode + 'F';
         }
-        if (factorStatics.get('J') > factorStatics.get('P')) {
+        if (factorStatics.get('J').scopes > factorStatics.get('P').scopes) {
           resultCode = resultCode + 'J';
         } else {
           resultCode = resultCode + 'P';

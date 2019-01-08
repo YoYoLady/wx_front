@@ -14,15 +14,51 @@ Page({
   data: {
     loading: false,
     showAll: false,
+    careerresult: '',
+    industryresult: '',
+    sepcresult: '',
+    courseresult: '',
     holland: false,
     hollandresult: '',
     hollanddes: '',
     mb: false,
     mbresult: '',
+    mbdes: '',
     mbarr: [],
+    mbcareer: '',
+    mbregin: '',
     gatb: false,
     gatbresult: '',
     gatbArr: [],
+    coure: [{
+        name: '物理',
+        count: 0
+      },
+      {
+        name: '化学',
+        count: 0
+      },
+      {
+        name: '历史',
+        count: 0
+      },
+      {
+        name: '政治',
+        count: 0
+      },
+      {
+        name: '地理',
+        count: 0
+      },
+      {
+        name: '生物',
+        count: 0
+      },
+      {
+        name: '技术',
+        count: 0
+      }
+    ]
   },
 
   /**
@@ -52,8 +88,12 @@ Page({
       if (options.papertype === 'gatb') {
         that.getGatbResult(JSON.parse(options.result));
       }
+
     }
   },
+
+
+
   /**
    * 从服务器获取评测结果
    * 
@@ -128,6 +168,7 @@ Page({
         hollandresult: resultCode,
       });
       that.hollanChart(result);
+      that.evaluatereport();
     }).catch(res => {
       console.log(res)
       that.setData({
@@ -152,14 +193,14 @@ Page({
       } catch (e) {
         console.error('getSystemInfoSync failed!');
       }
-      var hollandCat=[];
+      var hollandCat = [];
       var hollandScopeCat = [];
-      result.user_answer_gather.forEach((data)=>{
+      result.user_answer_gather.forEach((data) => {
         hollandCat.push(data.factor);
         hollandScopeCat.push(data.scopes);
       });
-  
-     
+
+
       radarChart = new wxCharts({
         canvasId: 'radarCanvas',
         type: 'radar',
@@ -184,6 +225,9 @@ Page({
   },
   getMBTIResult(result) {
 
+    that.setData({
+      loading: true
+    });
 
     var arr = [{}, {}, {}, {}];
 
@@ -241,11 +285,41 @@ Page({
       e.rightper = (((e.rightcount) * 100) / (e.leftcount + e.rightcount)).toFixed(2) + '%';
     });
 
+    const db = wx.cloud.database()
+    const _ = db.command
+    var desc;
+
     that.setData({
-      mb: true,
-      mbarr: arr,
-      mbresult: result.result_code
+      loading: true
     });
+
+    db.collection('MBTI_explain').where({
+      dim: _.eq(result.result_code)
+    }).get().then(res => {
+      console.log(res);
+      that.setData({
+        loading: false,
+        mb: true,
+        mbarr: arr,
+        mbdes: res.data[0].description,
+        mbresult: result.result_code,
+        mbcareer: res.data[0].career,
+        mbregin: res.data[0].region,
+      });
+      that.evaluatereport();
+    }).catch(error => {
+      console.log(error);
+      that.setData({
+        loading: false
+      });
+      common.toasterror({
+        title: '获取MBTI失败',
+        duration: 1000
+      });
+    });
+
+
+
 
 
   },
@@ -253,7 +327,7 @@ Page({
   getGatbResult(result) {
     that.setData({
       gatb: true,
-      gatbresult: result.result_code
+      gatbresult: result.result_code.split(';')
     });
 
 
@@ -304,6 +378,118 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
+
+  },
+  /**
+   * 找到相同的职业
+   * 
+   */
+  evaluatereport() {
+    if (that.data.hollanddes != '' && that.data.mbcareer != '') {
+      var bothcarerr = '';
+      var hollandresult = that.data.hollanddes.replace('适合的典型专业有：', '').replace('等', '').split('、');
+      if (hollandresult.length != 0) {
+        hollandresult.forEach((a) => {
+          if (that.data.mbcareer.search(a) != -1) {
+            bothcarerr = bothcarerr + a + ',';
+          }
+        });
+        if (bothcarerr == '') {
+          bothcarerr = 'holland和mbti没有相同的职业';
+        }
+        that.setData({
+          careerresult: bothcarerr,
+          industryresult: '学术/科研'
+        });
+      }
+      const db = wx.cloud.database()
+      const _ = db.command
+      var spec = '';
+      var count = 0;
+      var time = 0;
+      var isbreak = false;
+      db.collection('second_industry_sepcial').where({
+        secondlevelname: _.eq(that.data.industryresult)
+      }).get().then(res => {
+        console.log('对应的专业有：');
+        console.log(res.data);
+        res.data.forEach((spe) => {
+          if (count <= 30) {
+            count++
+            spec = spec + spe.name + ','
+          } else {
+            isbreak = true;
+          }
+        });
+        if (res.data.length != 20) {
+          isbreak = true;
+        }
+        that.getCourse(spec);
+        that.setData({
+          sepcresult: spec
+        });
+      }).catch(error => {
+        console.log(error)
+        common.toasterror({
+          title: '获取推荐专业出错',
+          duration: 1000
+        });
+      })
+    }
+  },
+
+  getCourse(spec) {
+    console.log('推荐的专业有：');
+    console.log(spec);
+    const db = wx.cloud.database()
+    const _ = db.command
+    var specs = spec.split(',');
+    var toalt = 0;
+    db.collection('speciality').where({
+      spec_class: _.in(specs)
+    }).count().then(res => {
+      console.log('总数目 count ' + res.total)
+      toalt = res.total;
+      that.data.coure.forEach((spe) => {
+        that.getCourseCount(specs, spe, res.total)
+      });
+
+    }).catch(error => {
+      console.log(error)
+      common.toasterror({
+        title: '获取推荐学科出错',
+        duration: 1000
+      });
+    })
+
+  },
+
+  getCourseCount(specs, excal, toalt) {
+    const db = wx.cloud.database()
+    const _ = db.command
+    db.collection('speciality').where({
+      spec_class: _.in(specs),
+      subject: db.RegExp({
+        regexp: excal.name,
+        options: 'i',
+      })
+    }).count().then(res => {
+      console.log(excal.name + ' count ' + res.total)
+      excal.count = (res.total * 100) / toalt;
+      var bilit = '';
+      that.data.coure.forEach((data) => {
+        bilit = bilit + data.name + ' ' + data.count.toFixed(2) + '%,'
+      });
+      that.setData({
+        courseresult: bilit
+      });
+    }).catch(error => {
+      console.log(error)
+      common.toasterror({
+        title: '获取学科比例出错',
+        duration: 1000
+      });
+    })
 
   }
 })

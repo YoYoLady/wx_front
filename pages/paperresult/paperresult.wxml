@@ -21,15 +21,21 @@
     <view>您的职业兴趣评测结果是：{{hollandresult}}</view>
     <view>{{hollanddes}}</view>
 
-  <canvas canvas-id="radarCanvas" class="canvas"></canvas>
+    <canvas canvas-id="radarCanvas" class="canvas"></canvas>
 
   </view>
 
   <view id='mb' wx:if="{{mb}}" class='marginTop'>
-    <view>你的MBTI结果是：</view>
-    <view>{{mbresult}}</view>
+    <view class='marginTop'>你的MBTI结果是：</view>
+    <view class='marginTop'>{{mbresult}}</view>
+    <view class='marginTop'>{{mbdes}}</view>
+    <view class='marginTop'>你的MBTI职业：</view>
+    <view class='marginTop'>{{mbcareer}}</view>
+    <view class='marginTop'>你的MBTI适合的领域：</view>
+    <view class='marginTop'>{{mbregin}}</view>
 
-    <view class='content_item' wx:for="{{mbarr}}">
+
+    <view class='content_item marginTop' wx:for="{{mbarr}}">
       <template is="mbItem" data="{{...item}}" />
     </view>
 
@@ -39,10 +45,25 @@
 
 
   <view iid='gatb' wx:if="{{gatb}}" class='marginTop'>
-    <view>你的GATB结果是：</view>
-    <view>{{gatbresult}}</view>
+    <view class='marginTop'>你的GATB结果是：</view>
+    <view class='marginTop' wx:for="{{gatbresult}}">{{item}}</view>
   </view>
 
+
+
+  <view wx:if="{{showAll}}" class='marginTop'>
+
+      <view class='marginTop report'>学科报告：</view>
+
+    <view class='marginTop'>你的适合职业有：</view>
+    <view class='marginTop'>{{careerresult}}</view>
+    <view class='marginTop'>你的适合行业有：</view>
+    <view class='marginTop'>{{industryresult}}</view>
+    <view class='marginTop'>你需要的专业：</view>
+    <view class='marginTop'>{{sepcresult}}</view>
+    <view class='marginTop'>学科的要求：</view>
+    <view class='marginTop'>{{courseresult}}</view>
+  </view>
 
 
 

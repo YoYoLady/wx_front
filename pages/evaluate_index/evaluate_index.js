@@ -5,17 +5,19 @@ Page({
   data: {
 
   },
-  beginHolland: function () {
+  beginHolland: function() {
+    var timestamp = Date.parse(new Date());
+    console.log("time " + timestamp);
     wx.navigateTo({
       url: '../papers/paper?papertype=holland'
     })
   },
-  beginMBTI: function () {
+  beginMBTI: function() {
     wx.navigateTo({
       url: '../papers/paper?papertype=mbti'
     })
   },
-  beginCompetence: function () {
+  beginCompetence: function() {
     wx.navigateTo({
       url: '../papers/paper?papertype=gatb'
     })

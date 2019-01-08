@@ -80,3 +80,6 @@
   width: 400px;
   height: 400px;
 }
+.report {
+  font-size: 60rpx;
+}

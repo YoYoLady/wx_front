@@ -12,15 +12,18 @@ exports.main = async(event, context) => {
     APPID,
     UNIONID
   } = cloud.getWXContext();
+  var tamp = new Date();
+  var timestamp = Date.parse(tamp);
   try {
     await db.collection('new_user_answer').add({
       // data 字段表示需新增的 JSON 数据
+    
       data: {
         wx_openid: OPENID,
-        gmt_created: new Date().getMilliseconds(),
-        gmt_modified: new Date().getMilliseconds(),
-        date_created: new Date(),
-        date_modified: new Date(),
+        gmt_created: timestamp,
+        gmt_modified: timestamp,
+        date_created: tamp,
+        date_modified: tamp,
         result_code: event.result_code,
         user_answer_gather: event.user_answer_gather,
         user_answer_detail: event.user_answer_detail,
