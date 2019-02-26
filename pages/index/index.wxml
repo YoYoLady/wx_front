@@ -1,34 +1,39 @@
 <!--index.wxml-->
   <view class="page">
-    <view class="page__hd">
-      <view class="page__title">{{head_title}}</view>
-      <view class="page__desc">联合*****高校，国内顶级教育、心理学专家联合推出</view>
+    <view class="head2_text_middle">
+       权威评测·深度解析·挖掘潜能·提升自我
     </view>
-    <view class="head2_text_left">
-      评测流程:
-    </view>
-    <view class="button-sp-area">
-      <button class="weui-btn" type="primary" plain="true" bindtap="finishUserInfo">1.完善信息</button>
-    </view>
-    <view class="button-sp-area">
-      <button style="background-size:100% 100% ;" class="weui-btn" type="primary" plain="true" bindtap="beginEvaluate">2.参与评测</button>
-    </view>
-    <view class="button-sp-area">
-      <button class="weui-btn" type="primary" plain="true" bindtap="resultReport">3.评测报告</button>
-    </view>
-    <view class="head2_text_left">
-      <text>评测须知：</text>
-    </view>
-    <view class="page__desc">
-      <text class="text_desc" space="true" selectable="true" decode="true"> &emsp; &emsp;&emsp; &emsp;为了保证*********
-  &emsp; &emsp;*****
-  &emsp; &emsp;*****
-  &emsp; &emsp;*****
-  &emsp; &emsp;*****
-  &emsp; &emsp;*****
-  </text>
-    </view>
-    <view class="button-sp-area">
-      <button class="weui-btn" type="warn" plain="true" bindtap="beginEvaluate">直接评测</button>
-    </view>
+    <view class="swiper-container">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="{{duration}}" current="{{swiperCurrent}}" bindchange="swiperChange" class="swiper">
+    <block wx:for="{{imgUrls}}" wx:key="unique">
+      <swiper-item>
+        <image src="{{item}}" class="img" bindtap="swipclick" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="text_small_desc">
+   牵手浙江师范大学，行业专家倾力打造
+</view>
+<!-- <view class="ServiceCenter">
+<image class="image_main_function" src="../../images/1.0/选科功能.png" mode="scaleToFill"></image>
+</view> -->
+
+<view>
+      <cover-view class="image-cnt">
+        <cover-image class="cover-image" src="../../images/1.0/选科功能.png" />
+      </cover-view>
+      <cover-view class="image-cnt">
+        <cover-image class="cover-image" src="../../images/1.0/压力功能.png" />
+      </cover-view>
+</view>
+
+<view style="background-image: url('https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png')">
+</view>
+
+
+
+
+
+  
   </view>

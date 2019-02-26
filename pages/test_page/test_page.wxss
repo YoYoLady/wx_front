@@ -1,0 +1,49 @@
+
+page {
+    background-image: url("https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png");
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+
+
+.image-parent {
+  height: 400rpx; 
+  position: relative;
+  border: 2rpx solid red;
+}
+
+.image {
+  width: 90%;
+}
+
+
+.child_text {
+  width: 100px;
+  height: 24px;  
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  /* right: 0;
+  bottom: 0; */
+  /* margin: auto; */
+  color: white;
+  font-size:x-large;
+  text-align: center;
+  background:transparent;
+}  
+
+.child_botton {
+  width: 80px;
+  height: 20px;  
+  position: absolute;
+  left: 20px;
+  top: 60px;
+  /* right: 0;
+  bottom: 0; */
+  /* margin: auto; */
+  color: black;
+  font-size: small;
+  background:white;
+
+}  
+

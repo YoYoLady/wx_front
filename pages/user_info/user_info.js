@@ -140,29 +140,52 @@ Page({
       });
     } else {
       //调用云函数，更新后台数据库
-      wx.cloud.callFunction({
-          // 云函数名称
-          name: 'updateUserInfo',
-          // 传给云函数的参数
-          data: {
-            edu_school: shcool,
-            edu_grade: grade,
-            mobile: phoneText
-          }
-        }).then(res => {
-          console.log("call updateUserInfo success!")
-          console.log(res.result)
-          wx.redirectTo({
-            url: '../evaluate_index/evaluate_index'
+      // wx.cloud.callFunction({
+      //     // 云函数名称
+      //     name: 'updateUserInfo',
+      //     // 传给云函数的参数
+      //     data: {
+      //       edu_school: shcool,
+      //       edu_grade: grade,
+      //       mobile: phoneText
+      //     }
+      //   }).then(res => {
+      //     console.log("call updateUserInfo success!")
+      //     console.log(res.result)
+      //     wx.redirectTo({
+      //       url: '../evaluate_index/evaluate_index'
+      //     })
+      //   })
+      //   .catch(res => {
+      //     console.log(res);
+      //     common.toasterror({
+      //       title: '更新用户信息失败 ' + res.errMsg,
+      //       duration: 1000
+      //     });
+      //   })
+
+      wx.request({
+        url: 'http://47.99.217.252:80/user/add',
+        method: 'post',
+        data: {
+          user_id: 'iio',
+          user_name: 'pp',
+          wx_name: '33',
+          wx_id : '000'
+        },
+        success: function (res) {
+          wx.hideLoading();
+          console.log(res.data)
+        },
+        fail: function () {
+          wx.hideLoading();
+          wx.showModal({
+            title: '网络错误',
+            content: '网络出错，请刷新重试',
+            showCancel: false
           })
-        })
-        .catch(res => {
-          console.log(res);
-          common.toasterror({
-            title: '更新用户信息失败 ' + res.errMsg,
-            duration: 1000
-          });
-        })
+        }
+      })
 
     }
 

@@ -1,7 +1,7 @@
 <view class="splash">
 
 <!--背景图片-->
-<image class='splashbg' src="../../images/splash.jpg" mode="scaleToFill"></image>
+<image class='splashbg' src="../../images/1.0/加载页.jpg" mode="scaleToFill"></image>
 
 
 <!--如果没有授权的话还需要授权-->

@@ -1,6 +1,8 @@
 {
   "pages": [
+    "pages/test_page/test_page",
     "pages/splash/splash",
+
     "pages/index/index",
     "pages/logs/logs",
     "pages/user_info/user_info",
@@ -13,5 +15,23 @@
     "navigationBarBackgroundColor": "fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath":"",
+        "selectedIconPath":""
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "减压"
+      },
+      {
+        "pagePath": "pages/user_info/user_info",
+        "text": "我的"
+      }
+    ]
   }
 }
