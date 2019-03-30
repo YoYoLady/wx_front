@@ -89,7 +89,7 @@
   text-align: center;
   line-height: 50px;
   background-image: url("https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png");
-}
+
 
 .image-cnt {
   display: flex;
@@ -112,7 +112,9 @@
 }
 
 
-
+/*
+  轮播图
+*/
 swiper {
     height: 450rpx;
 }
@@ -130,3 +132,61 @@ swiper-item image {
   width: 100%;
   height: 100%;
 }
+
+
+/*
+  图片中潜入按钮
+*/
+.image-parent {
+  height: 400rpx; 
+  position: relative;
+  border: 2rpx solid red;
+}
+
+.image {
+  width: 90%;
+}
+
+.child_text {
+  width: 100px;
+  height: 24px;  
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  /* right: 0;
+  bottom: 0; */
+  /* margin: auto; */
+  color: white;
+  font-size:x-large;
+  text-align: center;
+  background:transparent;
+}  
+
+.child_botton {
+  width: 80px;
+  height: 24px;  
+  position: absolute;
+  left: 20px;
+  top: 60px;
+  /* right: 0;
+  bottom: 0; */
+  /* margin: auto; */
+  color: black;
+  font-size: small;
+  background:white;
+}  
+
+.child_botton2 {
+  width: 80px;
+  height: 24px;  
+  position: absolute;
+  left: 120px;
+  top: 60px;
+  /* right: 0;
+  bottom: 0; */
+  /* margin: auto; */
+  color: black;
+  font-size: small;
+  background:white;
+}  
+

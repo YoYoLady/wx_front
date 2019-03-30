@@ -3,4 +3,5 @@
   <image class='image' mode='widthFix' src='../../images/1.0/选科功能.png'></image>
   <view class="child_text">选科评测</view>
   <button class="child_botton">开始评测</button>
+  <button class="child_botton2" wx:if="{{3<2}}">查看报告</button>
 </view> 

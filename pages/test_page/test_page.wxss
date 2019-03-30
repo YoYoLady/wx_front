@@ -34,7 +34,7 @@ page {
 
 .child_botton {
   width: 80px;
-  height: 20px;  
+  height: 24px;  
   position: absolute;
   left: 20px;
   top: 60px;
@@ -44,6 +44,19 @@ page {
   color: black;
   font-size: small;
   background:white;
+}  
 
+.child_botton2 {
+  width: 80px;
+  height: 24px;  
+  position: absolute;
+  left: 120px;
+  top: 60px;
+  /* right: 0;
+  bottom: 0; */
+  /* margin: auto; */
+  color: black;
+  font-size: small;
+  background:white;
 }  
 
