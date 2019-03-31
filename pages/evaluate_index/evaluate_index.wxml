@@ -16,4 +16,9 @@
     <view class="button-sp-area">
     <button class="weui-btn" type="primary" plain="true" bindtap="beginCompetence">职业能力         </button>
   </view>
+
+<!-- <import src="./pages/tabBar/tabBar.wxml" />  
+<template is="tabBar" data="{{tabBar: tabBar}}" /> 
+<text>主页面</text>  -->
+<tBar />
   </view>

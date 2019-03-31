@@ -1,4 +1,4 @@
 {
   "navigationBarTitleText": "首页",
-  "usingComponents": {}
+  "usingComponents": {"tBar":"../../custom-tab-bar/index"}
 }

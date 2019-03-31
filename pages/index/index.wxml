@@ -15,25 +15,28 @@
 <view class="text_small_desc">
    牵手浙江师范大学，行业专家倾力打造
 </view>
-<!-- <view class="ServiceCenter">
-<image class="image_main_function" src="../../images/1.0/选科功能.png" mode="scaleToFill"></image>
-</view> -->
 
-<view>
+<!-- <view>
       <cover-view class="image-cnt">
         <cover-image class="cover-image" src="../../images/1.0/选科功能.png" />
       </cover-view>
       <cover-view class="image-cnt">
         <cover-image class="cover-image" src="../../images/1.0/压力功能.png" />
       </cover-view>
+</view> -->
+
+<view class="image-parent">
+  <image class='image' mode='widthFix' src='../../images/1.0/选科功能.png'></image>
+  <view class="child_text">新高考选科测评</view>
+  <button class="child_botton" bindtap="beginEvaluate">开始评测</button>
+  <button class="child_botton2" wx:if="{{3>2}}" bindtap="resultReport">查看报告</button>
+</view> 
+
+<view class="image-parent">
+  <image class='image' mode='widthFix' src='../../images/1.0/压力功能.png'></image>
+  <view class="child_text">学业压力测试</view>
+  <button class="child_botton">开始评测</button>
+  <button class="child_botton2" wx:if="{{3>2}}">查看报告</button>
+</view> 
+<tBar />
 </view>
-
-<view style="background-image: url('https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png')">
-</view>
-
-
-
-
-
-  
-  </view>

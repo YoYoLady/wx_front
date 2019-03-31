@@ -1,38 +1,35 @@
 /**index.wxss**/
 
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+/*
+  轮播图
+*/
+swiper {
+    height: 450rpx;
 }
-
-
-.authparent {
-  position: fixed;
-  height: 100%;
+swiper-item image {
+    width: 100%;
+    height: 100%;
+}
+.swiper-container{
+  position: relative;
+}
+.swiper-container .swiper{
+  height: 350rpx;
+}
+.swiper-container .swiper .img{
   width: 100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;/*垂直居中*/
-  justify-content: center;/*水平居中*/
+  height: 100%;
 }
-
-.auth {
-  color: green;
-  width: auto;
-  height: auto;
-  margin: auto auto;
-  border: 1rpx solid green;
-}
-
-.auth::after{
-  border: 0px solid #bfbfbf;
- 
-}
+/*
+  end 轮播图
+*/
 
 
 
-
+/*
+  杂项
+*/
 .head2_text_left {
   margin-left: 5px;
   text-align: left;
@@ -61,101 +58,36 @@
   height: 100rpx;
   margin:10%
 }
-
-
-
-
-.ServiceCenter{
-  width: 100vw;height: 40vw;margin-top:0.5vw ;background: url('https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png');
-   background-size:100% 100%;
-    -moz-background-size:100% 100%;
-}
-
-/* page{
-  height: 100%;
-} */
-.container{
-  background-image: url("https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png");
-  background-size:100% 100%;
-  background-repeat:no-repeat;
-}
-
-
-.cover-view {
-  margin-left: 52px;
-  margin-top: 20px;
-  width: 200px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  background-image: url("https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png");
-
-
-.image-cnt {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 4px;
-}
-
-.cover-image {
-  width: 90%;
-  height: 200rpx;
-}
-
-
-
-.imageView{
-    height:90%;
-    width: 260rpx;
-    background: #4DA9EB url('https://6576-evaluation-f7a0aa-1258155208.tcb.qcloud.la/压力功能.png') no-repeat center;
-}
-
-
 /*
-  轮播图
+  end：杂项
 */
-swiper {
-    height: 450rpx;
-}
-swiper-item image {
-    width: 100%;
-    height: 100%;
-}
-.swiper-container{
-  position: relative;
-}
-.swiper-container .swiper{
-  height: 350rpx;
-}
-.swiper-container .swiper .img{
-  width: 100%;
-  height: 100%;
-}
+
 
 
 /*
   图片中潜入按钮
 */
 .image-parent {
-  height: 400rpx; 
+  height: 280rpx; 
   position: relative;
-  border: 2rpx solid red;
+  border: 2rpx solid hidden;
 }
 
 .image {
-  width: 90%;
+  width: 94%;
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 .child_text {
-  width: 100px;
+  width: 180px;
   height: 24px;  
   position: absolute;
   left: 20px;
   top: 20px;
-  /* right: 0;
-  bottom: 0; */
-  /* margin: auto; */
   color: white;
   font-size:x-large;
   text-align: center;
@@ -166,11 +98,8 @@ swiper-item image {
   width: 80px;
   height: 24px;  
   position: absolute;
-  left: 20px;
+  left: 30px;
   top: 60px;
-  /* right: 0;
-  bottom: 0; */
-  /* margin: auto; */
   color: black;
   font-size: small;
   background:white;
@@ -182,11 +111,10 @@ swiper-item image {
   position: absolute;
   left: 120px;
   top: 60px;
-  /* right: 0;
-  bottom: 0; */
-  /* margin: auto; */
   color: black;
   font-size: small;
   background:white;
 }  
-
+/*
+  end: 图片中潜入按钮
+*/

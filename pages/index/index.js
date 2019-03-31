@@ -77,7 +77,7 @@ Page({
 
   //开始评测 
   beginEvaluate: function() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../evaluate_index/evaluate_index'
     })
   },
