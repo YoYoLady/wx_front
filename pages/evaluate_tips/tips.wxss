@@ -1,0 +1,30 @@
+/* pages/evaluate_tips/tips.wxss */
+
+
+button::after{ 
+	border: none; 
+}
+
+button {
+    margin-top: 100px;
+    width: 300px;
+    border-radius: 30px;
+    background: #78c8e8;
+    color: white;
+    padding: 0rpx 100rpx;
+}
+
+/*
+  图片中潜入控件
+*/
+.image-parent {
+  height: 700rpx; 
+  position: relative;
+  border: 2rpx solid hidden;
+}
+
+.image {
+  width: 100%;
+  position: absolute;
+}
+

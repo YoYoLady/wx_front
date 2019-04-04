@@ -21,4 +21,4 @@
 <template is="tabBar" data="{{tabBar: tabBar}}" /> 
 <text>主页面</text>  -->
 <tBar />
-  </view>
+</view>

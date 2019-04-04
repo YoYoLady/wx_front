@@ -1,19 +1,19 @@
 {
   "pages": [
-
     
     "pages/index/index",
     "pages/splash/splash",
     "pages/test_page/test_page",
-    
+"pages/evaluate_subject_choice/prefer",
+
     "pages/logs/logs",
     "pages/user_info/user_info",
     "pages/evaluate_index/evaluate_index",
     "pages/papers/paper",
-    "pages/paperresult/paperresult"
+    "pages/paperresult/paperresult",
+    "pages/evaluate_tips",
+    "pages/evaluate_tips/tips"
   ],
-
-
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "fff",

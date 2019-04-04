@@ -1,0 +1,111 @@
+/* pages/evaluate_subject_choice/prefer.wxss */
+
+
+button::after{ 
+	border: none; 
+}
+
+.button-begin {
+    margin-top: 100px;
+    width: 250px;
+    border-radius: 30px;
+    background: #78c8e8;
+    color: white;
+    padding: 0rpx 100rpx;
+}
+
+/*
+  图片中潜入控件
+*/
+.image-parent {
+  height: 700rpx; 
+  position: relative;
+  border: 2rpx solid hidden;
+}
+
+.image {
+  width: 100%;
+  position: absolute;
+}
+
+.child_text {
+  width: 300px;
+  height: 24px;  
+  position: absolute;
+  left: 50px;
+  top: 20px;
+  color: white;
+  font-size: large;
+  text-align: center;
+  background:transparent;
+}  
+
+.child_botton {
+  width: 80px;
+  height: 24px;  
+  position: absolute;
+  left: 30px;
+  top: 60px;
+  font-size: small;
+} 
+
+/*
+  The first check box 
+*/
+label{
+   border:2rpx solid #aaaaaa;
+}
+.check {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+  background-color: white;
+  position: absolute;
+  left: 30px;
+  top: 60px;
+  right: 30px;
+  bottom: 220px;
+}
+.check label {
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 16rpx;
+  /* background-color: #fff;   */
+  display: flex;
+  align-items:flex-start;
+  margin: 0 5rpx;
+  justify-content: center;
+  /* color: #aaa; */
+  margin-top: 20rpx;
+}
+.is_checked {
+   background-color: #14a1fd;
+   opacity: 0.4;
+   color: #fff;
+   border: 2rpx solid #fff;
+}
+
+/*
+  The second check box 
+*/
+.child_text_second {
+  width: 300px;
+  height: 24px;  
+  position: absolute;
+  left: 50px;
+  top: 200px;
+  color: white;
+  font-size: large;
+  text-align: center;
+  background:transparent;
+} 
+.check_second {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+  background-color: white;
+  position: absolute;
+  left: 30px;
+  top: 230px;
+  right: 30px;
+}

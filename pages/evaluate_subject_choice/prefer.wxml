@@ -1,0 +1,23 @@
+<!--pages/evaluate_subject_choice/prefer.wxml-->
+<view>
+<view class="image-parent">
+  <image class='image' mode='widthFix' src='../../images/1.0/背景图.png'></image>
+   <view class="child_text">选择您善长的3个科目：</view>
+    <checkbox-group name="checkbox" class="check">
+          <label bindtap='clicks' wx:for="{{checks}}" wx:key="{{checks}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}'>
+            <checkbox value="{{item.name}}" data-val="{{item.name}}" hidden='false' checked='{{item.checked}}' /> {{item.name}}
+          </label>
+    </checkbox-group>
+ 
+
+    <view class="child_text_second">选择您喜欢的1-3个科目：</view>
+    <checkbox-group name="checkbox" class="check_second">
+          <label bindtap='clicks' wx:for="{{checks}}" wx:key="{{checks}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}'>
+            <checkbox value="{{item.name}}" data-val="{{item.name}}" hidden='false' checked='{{item.checked}}' /> {{item.name}}
+          </label>
+    </checkbox-group>
+</view>
+
+<button class='button-begin' >开始评测</button>
+<tBar />
+</view>

@@ -77,8 +77,9 @@ Page({
 
   //开始评测 
   beginEvaluate: function() {
+    //TODO: 需要判断是否先选学科、偏好
     wx.redirectTo({
-      url: '../evaluate_index/evaluate_index'
+      url: '../evaluate_subject_choice/prefer'
     })
   },
 

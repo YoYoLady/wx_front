@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "评测小提示",
+    "usingComponents": {
+      "tBar": "../../custom-tab-bar/index"
+    }
+}

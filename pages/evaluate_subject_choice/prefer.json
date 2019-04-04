@@ -1,0 +1,6 @@
+{
+      "navigationBarTitleText": "评测前选择",
+      "usingComponents": {
+        "tBar": "../../custom-tab-bar/index"
+      }
+}

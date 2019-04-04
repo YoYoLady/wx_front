@@ -1,0 +1,10 @@
+<!--pages/evaluate_tips/tips.wxml-->
+<view>
+<view class="image-parent">
+  <image class='image' mode='widthFix' src='../../images/1.0/背景图.png'></image>
+</view>
+
+<button>开始评测</button>
+<tBar />
+</view>
+
