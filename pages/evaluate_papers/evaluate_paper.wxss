@@ -1,0 +1,204 @@
+/* pages/evaluate_papers/evaluate_paper.wxss */
+
+/*
+  图片中潜入控件
+*/
+.image-parent {
+  height: 700rpx; 
+  position: relative;
+  border: 2rpx solid hidden;
+}
+
+.image {
+  width: 100%;
+  position: absolute;
+}
+
+.question_parent {
+  height: 1100rpx; 
+  width: 90%;
+  position: absolute;
+  left: 40rpx;
+  top: 40rpx;
+  background-color: white;
+}
+
+.child_text {
+  width: 90%;
+  height: 80rpx;  
+  position: absolute;
+  left: 40rpx;
+  top: 40rpx;
+  color: black;
+  font-size: medium;
+  text-align: left;
+  background:whitesmoke;
+ 
+}  
+
+.child_text_small {
+  width: 90%;
+  height: 40rpx;  
+  position: absolute;
+  left: 40rpx;
+  top: 90rpx;
+  color: black;
+  font-size: small;
+  text-align: left;
+  background:whitesmoke;
+} 
+
+.question_body {
+  width: 80%;
+  height: 300rpx;  
+  position: absolute;
+  left: 60rpx;
+  top: 140rpx;
+  color: blue;
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.options_parent {
+  width: 80%;
+  height: 800rpx;  
+  position: absolute;
+  left: 60rpx;
+  top: 450rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 30rpx 30rpx;
+  align-items:flex-start;
+}
+
+.options_parent .A {
+  color: #595757;
+  font-size: 40rpx;
+  float: left;
+  position: absolute;
+  top: 60rpx;
+}
+
+.options_parent .B {
+  color: #595757;
+  font-size: 40rpx;
+  float: left;
+  position: absolute;
+  top: 140rpx;
+}
+
+.options_parent .C {
+  color: #595757;
+  font-size: 40rpx;
+  float: left;
+  position: absolute;
+  top: 220rpx;
+}
+
+.options_parent .D {
+  color: #595757;
+  font-size: 40rpx;
+  float: left;
+  position: absolute;
+  top: 300rpx;
+}
+
+.options_parent .F {
+  color: #595757;
+  font-size: 40rpx;
+  float: left;
+  position: absolute;
+  top: 380rpx;
+}
+
+.options_parent .image_A {
+  border: 1px #595757 solid;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 80px;
+  justify-content: center;
+  font-size: 40rpx;
+  float: right;
+  position: absolute;
+  right: 100rpx;
+  top: 60rpx;
+}
+
+.options_parent .image_B {
+  border: 1px #595757 solid;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 80px;
+  justify-content: center;
+  font-size: 40rpx;
+  float: right;
+  position: absolute;
+  right: 100rpx;
+  top: 140rpx;
+}
+
+.options_parent .image_C {
+  border: 1px #595757 solid;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 80px;
+  justify-content: center;
+  font-size: 40rpx;
+  float: right;
+  position: absolute;
+  right: 100rpx;
+  top: 220rpx;
+}
+
+.options_parent .image_D {
+  border: 1px #595757 solid;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 80px;
+  justify-content: center;
+  font-size: 40rpx;
+  float: right;
+  position: absolute;
+  right: 100rpx;
+  top: 300rpx;
+}
+
+.options_parent .image_F {
+  border: 1px #595757 solid;
+  background-color: white;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 80px;
+  justify-content: center;
+  font-size: 40rpx;
+  float: right;
+  position: absolute;
+  right: 100rpx;
+  top: 380rpx;
+}
+
+.weui-progress{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center; width: 60%;   position: absolute;left: 120rpx; top: 980rpx}
+.weui-progress__bar{-webkit-box-flex:1;-webkit-flex:1;flex:1}
+
+.AI_text {
+  width: 60%;
+  height: 40rpx;  
+  position: absolute;
+  left: 120rpx;
+  top: 1000rpx;
+  color: black;
+  font-size: small;
+  text-align: left;
+  background:whitesmoke;
+} 

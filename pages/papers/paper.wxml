@@ -38,7 +38,7 @@
   <!--选项-->
   <view class='options' wx:for="{{curQuestion.options}}">
     <view data-item="{{item}}" class='optionchoose' bindtap='choseOption'>{{item.op}}</view>
-    <view data-item="{{item}}" class='optioncontent' bindtap='choseOption'>{{item.content}}</view>
+    <view data-item="{{item}}" class='optioncontent' bindtap='choseOption'>{{item.content}}   </view>
   </view>
 
 

@@ -1,4 +1,4 @@
-// pages/evaluate_tips/tips.js
+// pages/evaluate_papers/evaluate_paper.js
 Page({
 
   /**
@@ -6,12 +6,29 @@ Page({
    */
   data: {
 
-  },
+    curQuestion: {
+      body: '认为公认的解决方法是最好的',
+      options: [{
+        op: 'A',
+        content: '1、非常不像我         '
+      }, {
+        op: 'B',
+        content: '2、中等程度的不像我    '
+      }, {
+        op: 'C',
+        content: '3、有些想我又有些不像我 '
+      }, {
+        op: 'D',
+        content: '4、中等程度的像我      '
+      }, {
+        op: 'F',
+        content: '5、非常像我           '
+      }
+      ],
+    },
+    totalNum: 0,
+    curNum: -1
 
-  beginEvaluate : function() {
-    wx.navigateTo({
-      url: '../evaluate_papers/evaluate_paper',
-    })
   },
 
   /**

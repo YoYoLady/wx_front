@@ -1,7 +1,22 @@
 
-<view class="image-parent">
+<!-- <view class="image-parent">
   <image class='image' mode='widthFix' src='../../images/1.0/选科功能.png'></image>
   <view class="child_text">选科评测</view>
   <button class="child_botton">开始评测</button>
   <button class="child_botton2" wx:if="{{3<2}}">查看报告</button>
-</view> 
+</view>  -->
+<!-- <view class="page">
+    <view class="page__hd">
+        <view class="page__title">Progress</view>
+        <view class="page__desc">进度条，这里采用小程序原生的progress</view>
+    </view>
+
+ </view> -->
+
+
+      <view class="weui-progress">
+      <!-- <progress percent="50" stroke-width="10" /> -->
+            <view class="weui-progress__bar">
+                <progress percent="50" stroke-width="10" />
+            </view>
+        </view>

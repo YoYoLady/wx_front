@@ -40,15 +40,6 @@ button::after{
   background:transparent;
 }  
 
-.child_botton {
-  width: 80px;
-  height: 24px;  
-  position: absolute;
-  left: 30px;
-  top: 60px;
-  font-size: small;
-} 
-
 /*
   The first check box 
 */
@@ -106,6 +97,21 @@ label{
   background-color: white;
   position: absolute;
   left: 30px;
-  top: 230px;
+  top: 240px;
   right: 30px;
+  bottom: 30px;
+
+}
+
+.check_second label {
+  width: 100rpx;
+  height: 50rpx;
+  border-radius: 16rpx;
+  /* background-color: #fff;   */
+  display: flex;
+  align-items:flex-start;
+  margin: 0 5rpx;
+  justify-content: center;
+  /* color: #aaa; */
+  margin-top: 20rpx;
 }

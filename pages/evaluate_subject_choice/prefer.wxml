@@ -12,12 +12,12 @@
 
     <view class="child_text_second">选择您喜欢的1-3个科目：</view>
     <checkbox-group name="checkbox" class="check_second">
-          <label bindtap='clicks' wx:for="{{checks}}" wx:key="{{checks}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}'>
+          <label bindtap='clicks' wx:for="{{checks2}}" wx:key="{{checks2}}" wx:for-index="index" data-index="{{index}}" class='{{item.checked?"is_checked":""}}'>
             <checkbox value="{{item.name}}" data-val="{{item.name}}" hidden='false' checked='{{item.checked}}' /> {{item.name}}
           </label>
     </checkbox-group>
 </view>
 
-<button class='button-begin' >开始评测</button>
+<button class='button-begin' bindtap='continue_evaluate'>继续测试</button>
 <tBar />
 </view>

@@ -13,7 +13,18 @@ Page({
       { name: "政治", value: '4', checked: false },
       { name: "历史", value: '5', checked: false },
       { name: "技术", value: '6', checked: false }
-    ]},
+    ],
+    checks2: [
+      { name: "物理", value: '7', checked: false },
+      { name: "化学", value: '8', checked: false },
+      { name: "生物", value: '9', checked: false },
+      { name: "地理", value: '10', checked: false },
+      { name: "政治", value: '11', checked: false },
+      { name: "历史", value: '12', checked: false },
+      { name: "技术", value: '13', checked: false }
+    ]
+    
+    },
 
 
   clicks: function (e) {
@@ -36,8 +47,12 @@ Page({
     })
   },
 
-
-
+  continue_evaluate: function() {
+    wx.navigateTo({
+      url: '../evaluate_tips/tips'
+    })
+  },
+ 
   /**
    * 生命周期函数--监听页面加载
    */
