@@ -19,7 +19,34 @@ function toastwarn(arg) {
     duration: arg.duration
   })
 }
+// 倒计时
+function reTimer(countDown_time) {
+  var that = this;
+  var time = countDown_time.split(':')
+  var mmm = parseInt(time[0])
+  var sss = parseInt(time[1])
+  var Interval = setInterval(function () {
+    if (sss > 0) {
+      sss--
+    } else {
+      console.log('时间到')
+      clearInterval(Interval)
+    }
+    if (sss == 0 && mmm > 0) {
+      mmm--
+      sss = 59;
+    }
+    that.setData({
+      leftSeconds: sss,
+      leftMinutes: mmm,
+    })
+  }, 1000)
+}
 
-module.exports.toasterror = toasterror
-module.exports.toastwarn = toastwarn
-module.exports.toastinfo = toastinfo
+module.exports = {
+  reTimer: reTimer,
+  toasterror : toasterror,
+  toastwarn : toastwarn,
+  toastinfo : toastinfo
+}
+

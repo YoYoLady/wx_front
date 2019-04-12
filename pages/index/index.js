@@ -10,7 +10,7 @@ Page({
     swiperCurrent: 0,
     indicatorDots: true,
     autoplay: true,
-    interval: 3000,
+    interval: 2000,
     duration: 800,
     circular: true,
     imgUrls: [

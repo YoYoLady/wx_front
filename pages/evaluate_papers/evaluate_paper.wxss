@@ -189,7 +189,7 @@
 }
 
 .weui-progress{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-align:center;-webkit-align-items:center;align-items:center; width: 60%;   position: absolute;left: 120rpx; top: 980rpx}
-.weui-progress__bar{-webkit-box-flex:1;-webkit-flex:1;flex:1}
+.weui-progress__bar{-webkit-box-flex:1;-webkit-flex:1;flex:1; }
 
 .AI_text {
   width: 60%;

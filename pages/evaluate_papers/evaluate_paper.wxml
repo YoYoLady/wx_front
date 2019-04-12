@@ -4,7 +4,7 @@
   <view class="image-parent">
     <image class='image' mode='widthFix' src='../../images/1.0/背景图.png'></image>
     <view class='question_parent'></view>
-    <view class="child_text">评测小提醒：剩余多少分钟</view>
+    <view class="child_text">评测小提醒：剩余{{leftMinutes}}分{{leftSeconds}}秒</view>
     <view class="child_text_small">选择你最喜欢的答案哦</view>
     <view class='question_body'>{{curQuestion.body}}</view>
 
@@ -16,7 +16,7 @@
 
       <view class="weui-progress">
             <view class="weui-progress__bar">
-                <progress percent="50" stroke-width="10" />
+                <progress percent="{{process}}" stroke-width="10" activeColor="blue" />
             </view>
       </view>
     <view class="AI_text">AI解码分析中...</view>

@@ -1,4 +1,8 @@
 // pages/evaluate_papers/evaluate_paper.js
+
+const app = getApp()
+var common = require('../common/common.js');
+
 Page({
 
   /**
@@ -27,15 +31,18 @@ Page({
       ],
     },
     totalNum: 0,
-    curNum: -1
-
+    curNum: -1,
+    process: 0,
+    leftMinutes: 59,
+    leftSeconds: 59 
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var countDown_time = '59:59'
+    common.reTimer.call(this, countDown_time); 
   },
 
   /**
